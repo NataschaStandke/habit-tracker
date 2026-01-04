@@ -1,6 +1,9 @@
 body {
     background-image: url(assets/sakurabg.jpg);
-    background-size: 500px;
+    width: 100%;
+    height: 100vh;
+    background-size: cover;
+    background-position: center;
     background-color: rgb(225, 227, 227);
     background-blend-mode: lighten;
     text-align: center;
