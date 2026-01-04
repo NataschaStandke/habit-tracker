@@ -93,9 +93,9 @@ for (var i = 0; i < currentDate; i++) {
     var chosenDayDiv = document.getElementById("day" + (i + 1));
 
     if (chosenDay == "true") {
-        chosenDayDiv.setAttribute("style", "background-color:pink");
+        if (chosenDayDiv) chosenDayDiv.style.backgroundColor = "pink";
     } else if (chosenDay == "false") {
-        chosenDayDiv.setAttribute("style", "background-color:white");
+        if (chosenDayDiv) chosenDayDiv.style.backgroundColor = "white";
     }
 }
 
@@ -109,12 +109,12 @@ for (var i = 0; i < currentDate; i++) {
             "" + (currentMonth + 1) + "-" + num + "-" + currentYear;
 
         if (localStorage.getItem(storageString) === "false") {
-            selectedDate.setAttribute("style", "background-color:pink");
-            localStorage.setItem(storageString, true);
+            if (selectedDate) selectedDate.style.backgroundColor = "pink";
+            localStorage.setItem(storageString, "true");
             daysCompleted++;
         } else if (localStorage.getItem(storageString) === "true") {
-            selectedDate.setAttribute("style", "background-color:white");
-            localStorage.setItem(storageString, false);
+            if (selectedDate) selectedDate.style.backgroundColor = "white";
+            localStorage.setItem(storageString, "false");
             daysCompleted--;
         }
 
@@ -132,7 +132,7 @@ resetButton.onclick = function () {
             "" + (currentMonth + 1) + "-" + (i + 1) + "-" + currentYear;
         localStorage.setItem(tempString, "false");
         var curDay = document.getElementById("day" + (i + 1));
-        curDay.setAttribute("style", "background-color:white;");
+        if (curDay) curDay.style.backgroundColor = "white";
     }
     daysCompleted = 0;
     totalDays.innerHTML = daysCompleted + "/" + daysInThisMonth;
