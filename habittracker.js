@@ -41,26 +41,31 @@ var daysCompleted = 0;
 var totalDays = document.getElementById("totalDays");
 totalDays.innerHTML = "0/" + daysInThisMonth;
 
+/* Populate the calendar with days */
 var dayCount = 0;
 var rowCount = 0;
 var days = document.getElementsByClassName("days");
 
 for (var i = 0; i < days.length; i++) {
-    var day = days[rowCount].getElementsByClassName("day");
+    var day = days[i].getElementsByClassName("day");
     for (var j = 0; j < day.length; j++) {
 
         if (dayCount == currentDate - 1) {
-            day[j].setAttribute("style", "color: rgb(234, 1, 144");
-            day[j].setAttribute("style", "border:2px solid black");
+            day[j].style.color = "rgb(234, 1, 144)";
+            day[j].style.border = "2px solid black";
+        } else {
+            day[j].style.color = "";
+            day[j].style.border = "";
         }
 
         if (dayCount < daysInThisMonth) {
-            day[j].innnerHTML = dayCount + 1;
-            day[j].setAttribute("id", "day" + (dayCount + 1));
+            day[j].innerHTML = dayCount + 1;
+            day[j].id = "day" + (dayCount + 1);
             dayCount++;
         } else {
             day[j].innerHTML = "";
-            day[j].setAttribute("style", "background-color:white;");
+            day[j].style.backgroundColor = "white";
+            day[j].id = "";
         }
     }
     rowCount++;
@@ -88,9 +93,9 @@ for (var i = 0; i < currentDate; i++) {
     var chosenDayDiv = document.getElementById("day" + (i + 1));
 
     if (chosenDay == "true") {
-        chosenDayDiv.setAttribute("style", "background-color:pink;");
+        chosenDayDiv.setAttribute("style", "background-color:pink");
     } else if (chosenDay == "false") {
-        chosenDayDiv.setAttribute("style", "background-color:white;");
+        chosenDayDiv.setAttribute("style", "background-color:white");
     }
 }
 
@@ -104,11 +109,11 @@ for (var i = 0; i < currentDate; i++) {
             "" + (currentMonth + 1) + "-" + num + "-" + currentYear;
 
         if (localStorage.getItem(storageString) === "false") {
-            selectedDate.setAttribute("style", "background-color:pink;");
+            selectedDate.setAttribute("style", "background-color:pink");
             localStorage.setItem(storageString, true);
             daysCompleted++;
         } else if (localStorage.getItem(storageString) === "true") {
-            selectedDate.setAttribute("style", "background-color:white;");
+            selectedDate.setAttribute("style", "background-color:white");
             localStorage.setItem(storageString, false);
             daysCompleted--;
         }
